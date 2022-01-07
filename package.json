@@ -1,0 +1,12 @@
+{
+    "name": "meta1-io-price-update",
+    "version": "1.0.0",
+    "keywords": ["util", "functional", "server", "client", "browser"],
+    "author": "webstudi0",
+    "contributors": [],
+    "dependencies": {
+      "dotenv": "^10.0.0",
+      "request": "^2.88.2",
+      "meta1dex": "^0.6.13"
+    }
+}
