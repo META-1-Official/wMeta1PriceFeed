@@ -42,16 +42,15 @@ async function pricePush() {
         }
     };
     
-    console.log('Headers: ', headers);
-    console.log('dataString: ', dataString);
-    console.log('options: ', options);
-    
+    //console.log('Headers: ', headers);
+    //console.log('dataString: ', dataString);
+    //console.log('options: ', options);
     
     function callback(error, response, body) {
         if (!error && response.statusCode == 200) {
             console.log('Error: ', body);
         } else {
-            console.log('Success. META1 price: ', meta1usdtLatest, 'Response: ', response, "Body: ", body);
+            console.log('Success. META1 price: ', meta1usdtLatest);
         }
     }
     
