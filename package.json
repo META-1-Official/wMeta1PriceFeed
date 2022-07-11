@@ -1,12 +1,25 @@
 {
     "name": "meta1-io-price-update",
     "version": "1.0.0",
-    "keywords": ["util", "functional", "server", "client", "browser"],
+    "keywords": [
+        "util",
+        "functional",
+        "server",
+        "client",
+        "browser"
+    ],
+    "scripts": {
+        "start": "node main.js"
+    },
     "author": "webstudi0",
     "contributors": [],
     "dependencies": {
-      "dotenv": "^10.0.0",
-      "request": "^2.88.2",
-      "meta1dex": "^0.6.13"
+        "dotenv": "^10.0.0",
+        "express": "^4.18.1",
+        "meta1dex": "^0.6.13",
+        "reflect-metadata": "^0.1.13",
+        "request": "^2.88.2",
+        "tsyringe": "^4.7.0",
+        "ws": "^8.8.0"
     }
 }
