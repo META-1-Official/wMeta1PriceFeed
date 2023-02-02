@@ -1,4 +1,4 @@
-This project is used to push META1 price to meta1.io website.
+This project is used to push META1 price to meta1coin.vision website.
 
 To install run: npm install
 
