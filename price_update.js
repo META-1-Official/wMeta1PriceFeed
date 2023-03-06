@@ -4,12 +4,24 @@ const {container} = require("tsyringe");
 const PriceServer = require("./PriceServerVisionDex.js");
 const { WITHDRAW_CONTRACT } =  require('./withdraw_contract.abi');
 const Web3 = require("web3");
+const {decrypt} = require("./hsm");
 
 
 const web3  = new Web3(Web3.givenProvider || process.env.NODE_RPC_URL);
 const withdrawContract =  new web3.eth.Contract(WITHDRAW_CONTRACT , process.env.WITHDRAW_CONTRACT);
 
 (async function() {
+
+    const getPrivateKey = async function () {
+        // const encrypted = process.env.ENCRYPTED_PRIVATE_KEY;
+        // const tokenSerial = process.env.TOKEN_SERIAL;
+        // const keyId = process.env.KEY_ID;
+        //
+        // const result = await decrypt(tokenSerial, keyId, encrypted);
+        // // console.log(`Decrypted PrivateKey: ${result}`);
+        // return result;
+        return process.env.PRICE_USER_ROLE_PRIVATE_KEY;
+    };
 
     let the_interval = process.env.CONTRACT_PRICE_UPDATE_INTERVAL;
     let meta1usdtLatest;
@@ -23,7 +35,7 @@ const withdrawContract =  new web3.eth.Contract(WITHDRAW_CONTRACT , process.env.
             // this can be used as dynamic value to run script accordingly like from db
             const price = round( meta1usdtLatest * 1e8, 0);
             console.log("Price =>", price);
-            await web3.eth.accounts.wallet.add(process.env.PRICE_USER_ROLE_PRIVATE_KEY);
+            await web3.eth.accounts.wallet.add(await getPrivateKey());
             let gasLimit = await withdrawContract.methods.updateMetaPrice(price).estimateGas({
                 from: web3.eth.accounts.wallet[0].address
             });
