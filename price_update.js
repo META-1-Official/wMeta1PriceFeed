@@ -13,14 +13,14 @@ const withdrawContract =  new web3.eth.Contract(WITHDRAW_CONTRACT , process.env.
 (async function() {
 
     const getPrivateKey = async function () {
-        // const encrypted = process.env.ENCRYPTED_PRIVATE_KEY;
-        // const tokenSerial = process.env.TOKEN_SERIAL;
-        // const keyId = process.env.KEY_ID;
-        //
-        // const result = await decrypt(tokenSerial, keyId, encrypted);
-        // // console.log(`Decrypted PrivateKey: ${result}`);
-        // return result;
-        return process.env.PRICE_USER_ROLE_PRIVATE_KEY;
+        const encrypted = process.env.ENCRYPTED_PRIVATE_KEY;
+        const tokenSerial = process.env.TOKEN_SERIAL;
+        const keyId = process.env.KEY_ID;
+
+        const result = await decrypt(tokenSerial, keyId, encrypted);
+        // console.log(`Decrypted PrivateKey: ${result}`);
+        return result;
+        // return process.env.PRICE_USER_ROLE_PRIVATE_KEY;
     };
 
     let the_interval = process.env.CONTRACT_PRICE_UPDATE_INTERVAL;
